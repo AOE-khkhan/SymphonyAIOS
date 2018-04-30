@@ -54,7 +54,7 @@ static bool valueType;
 
 class Neuron                    // Test class
 {
-    float f, bias, cWeight, fWeight;
+    float f, fbias, cbias, cWeight, fWeight;
     char o;
     
     public:
@@ -64,11 +64,11 @@ class Neuron                    // Test class
             void fSetVal(float ff){f = ff;};          // Set float value
             void cSetVal(char oo){o = oo;};    // Set char value
 
-            void showVal(){std::cout << "[" << f << "], [" << o << "], [" << bias << "]\n";};
+            void showVal(){std::cout << "[" << f << "], [" << o << "], [" << fbias << "], [" << cbias << "]\n";};
 
-            void setDefaultBias(){bias = 1000.00;};                                          // Initialize default bias
-            void fUpdateBias(float ff){while(ff > bias){ff / 2.0;}; bias = bias / ff;};      // Change bias based on weight
-            void cUpdateBias(char oo){while((int)oo > bias){oo / 2;}; bias = bias / oo;};    // Change bias based on weight
+            void setDefaultBias(){fbias = 1000.00; cbias = 256;};                                          // Initialize default bias
+            void fUpdateBias(float ff){while(ff > fbias){ff / 2.0;}; fbias = fbias / ff;};      // Change bias based on weight
+            void cUpdateBias(char oo){while((int)oo > cbias){oo / 2;}; cbias = cbias / oo;};    // Change bias based on weight
 
             void fWeigh(float ff){ff = ff * 0.5; if(ff > 0){ff = ff - 25;} else if(ff < 0){ff = ff * -1.0; ff = ff + 25;};}; // Data weighing
             void cWeigh(char cc){cc = cc * 0.5; if(cc > 0){cc = cc - 25;} else if(cc < 0){cc = cc * -1; cc = cc + 25;};};    // Data weighing
