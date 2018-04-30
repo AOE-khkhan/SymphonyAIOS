@@ -1,7 +1,7 @@
 /****************************************
 * Symphony AI OS Neural Network Layer
 * 
-*
+* Bias values closer to 0 indicate higher correctness
 * **************************************/
 
 /*
@@ -67,8 +67,8 @@ class Neuron                    // Test class
             void showVal(){std::cout << "[" << f << "], [" << o << "], [" << fbias << "], [" << cbias << "]\n";};
 
             void setDefaultBias(){fbias = 1000.00; cbias = 256;};                                          // Initialize default bias
-            void fUpdateBias(float ff){while(ff > fbias){ff / 2.0;}; fbias = fbias / ff;};      // Change bias based on weight
-            void cUpdateBias(char oo){while((int)oo > cbias){oo / 2;}; cbias = cbias / oo;};    // Change bias based on weight
+            void fUpdateBias(){while(f > fbias){f / 2.0;}; fbias = fbias / f;};      // Change bias based on weight
+            void cUpdateBias(){while((int)o > cbias){o / 2;}; cbias = cbias / o;};    // Change bias based on weight
 
             void fWeigh(float ff){ff = ff * 0.5; if(ff > 0){ff = ff - 25;} else if(ff < 0){ff = ff * -1.0; ff = ff + 25;};}; // Data weighing
             void cWeigh(char cc){cc = cc * 0.5; if(cc > 0){cc = cc - 25;} else if(cc < 0){cc = cc * -1; cc = cc + 25;};};    // Data weighing

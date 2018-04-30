@@ -39,7 +39,19 @@ int main()
             .cPassData(char)
             .fRetVal()
             .cRetVal()
-    */            
+    */
+    
+    NeuronBlock x;
+    
+    x.a[0].fSetVal(22.0 / 7.0);
+    x.a[0].cSetVal(65);
+    x.a[0].showVal();
+    std::cout << "\n";
+    
+    x.a[0].fUpdateBias();
+    x.a[0].cUpdateBias();
+    x.a[0].showVal();
+    std::cout << "\n";
 
     std::cin.get();
     return 0;
