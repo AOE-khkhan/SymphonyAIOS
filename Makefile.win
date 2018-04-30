@@ -1,0 +1,40 @@
+# Project: Symphony
+# Compiler: Default GCC compiler
+# Compiler Type: MingW 3
+# Makefile created by wxDev-C++ IDE 7.4.2.569 on 29/04/18 20:44
+
+WXLIBNAME = wxmsw29u
+CPP       = g++.exe
+CC        = gcc.exe
+WINDRES   = "windres.exe"
+OBJ       = Objects/MingW/symphony.o
+LINKOBJ   = "Objects/MingW/symphony.o"
+LIBS      = -L"T:/Dev-Cpp/lib/wx/gcc_lib" -L"T:/Dev-Cpp/lib" -L"T:/Dev-Cpp/MinGW32/lib"  
+INCS      = -I"T:/Dev-Cpp/MinGW32/include"
+CXXINCS   = -I"T:/Dev-Cpp/MinGW32/include" -I"T:/Dev-Cpp/" -I"T:/Dev-Cpp/include/common"
+RCINCS    = --include-dir "T:/Dev-Cpp/include/common"
+BIN       = Output/MingW/symphony.exe
+DEFINES   = 
+CXXFLAGS  = $(CXXINCS) $(DEFINES)  
+CFLAGS    = $(INCS) $(DEFINES)  
+GPROF     = gprof.exe
+ifeq ($(OS),Windows_NT)
+   RM = del /Q
+   FixPath = $(subst /,\,$1)
+else
+   RM = rm -f
+   FixPath = $1
+endif
+LINK      = g++.exe
+
+.PHONY: all all-before all-after clean clean-custom
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	$(RM) $(call FixPath,$(LINKOBJ)) "$(call FixPath,$(BIN))"
+
+$(BIN): $(OBJ)
+	$(LINK) $(LINKOBJ) -o "$(BIN)" $(LIBS) 
+
+Objects/MingW/symphony.o: $(GLOBALDEPS) symphony.cpp textfunctions.h filefunctions.h interpret.h symphony.h textfunctions.h interpret.h neuralnetwork.h
+	$(CPP) -c symphony.cpp -o Objects/MingW/symphony.o $(CXXFLAGS)
